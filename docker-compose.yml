@@ -19,5 +19,16 @@ services:
     volumes:
       - db-store:/var/lib/mysql
 
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=phper
+      - PMA_PASSWORD=secret
+    ports:
+      - 8081:80
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions
+
 volumes:
   db-store:
