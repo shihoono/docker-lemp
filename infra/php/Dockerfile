@@ -13,5 +13,7 @@ RUN apt-get update && \
   docker-php-ext-install intl pdo_mysql zip bcmath
 
 COPY ./php.ini /usr/local/etc/php/php.ini
+COPY --from=node:12.14 /usr/local/bin /usr/local/bin
+COPY --from=node:12.14 /usr/local/lib /usr/local/lib
 
 WORKDIR /work
